@@ -8,6 +8,7 @@
     with import nixpkgs { system = "x86_64-linux"; };
     {
       packages.x86_64-linux.neo4j = callPackage ./pkgs/neo4j.nix { };
+      packages.x86_64-linux.libad9361-iio = callPackage ./pkgs/libad9361-iio.nix { };
       packages.x86_64-linux.attrs-strict = callPackage ./pkgs/attrs-strict.nix { };
       packages.x86_64-linux.swh-model = callPackage ./pkgs/swh-model.nix {
         attrs-strict = self.packages.x86_64-linux.attrs-strict;
@@ -16,5 +17,13 @@
       lib = {
         fetchSWH = callPackage ./pkgs/fetchSWH.nix { };
       };
+
+      devShell.x86_64-linux =
+        with pkgs;
+        pkgs.mkShell {
+          buildInputs = [
+            self.packages.x86_64-linux.libad9361-iio
+          ];
+        };
     };
 }
