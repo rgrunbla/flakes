@@ -13,17 +13,12 @@
       packages.x86_64-linux.swh-model = callPackage ./pkgs/swh-model.nix {
         attrs-strict = self.packages.x86_64-linux.attrs-strict;
       };
+      # Django 
+      packages.x86_64-linux.django-timezone-field = callPackage ./pkgs/django-timezone-field.nix { };
+      packages.x86_64-linux.django-celery-beat = callPackage ./pkgs/django-celery-beat.nix { django-timezone-field = self.packages.x86_64-linux.django-timezone-field; };
 
       lib = {
         fetchSWH = callPackage ./pkgs/fetchSWH.nix { };
       };
-
-      devShell.x86_64-linux =
-        with pkgs;
-        pkgs.mkShell {
-          buildInputs = [
-            self.packages.x86_64-linux.libad9361-iio
-          ];
-        };
     };
 }
