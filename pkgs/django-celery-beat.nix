@@ -3,14 +3,14 @@
 python3Packages.buildPythonPackage
 rec {
   pname = "django-celery-beat";
-  version = "2.2.0";
+  version = "2.2.1";
 
   src = python3Packages.fetchPypi {
     inherit pname version;
-    sha256 = "sha256-uKE6+xXnxT/AT0+EescabTIIiVmrpwHrfEpZ8MKLpUM=";
+    sha256 = "sha256-l65eswlUFVG9sHv2DMV8raz0KnQodWDO0tLAYphiAjQ=";
   };
   doCheck = false;
-  propagatedBuildInputs =
+  buildInputs =
     with python3Packages;
     [
       django_3
