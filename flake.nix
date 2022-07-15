@@ -1,6 +1,6 @@
 {
   description = " A collection of various NixOS packages in a single tree ";
-  inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; };
+  inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05"; };
 
   outputs = { self, nixpkgs }:
     with import nixpkgs { system = "x86_64-linux"; }; {
