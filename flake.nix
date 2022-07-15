@@ -4,6 +4,7 @@
 
   outputs = { self, nixpkgs }:
     with import nixpkgs { system = "x86_64-linux"; }; {
+      packages.x86_64-linux.kaleido = callPackage ./pkgs/kaleido.nix { };
       packages.x86_64-linux.neo4j = callPackage ./pkgs/neo4j.nix { };
       packages.x86_64-linux.kconfiglib = callPackage ./pkgs/kconfiglib.nix { };
       packages.x86_64-linux.libad9361-iio =
